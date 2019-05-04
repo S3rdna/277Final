@@ -1,23 +1,9 @@
 
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.ArrayList;
+
 
 /*
- * If a user has to become an Observer it will implement Observer functionality. notifyObserver() method.
- * From update method User can do something when state of Observable is changed. 
- * In this case getRoom() is called.
-
- * Here, User is not doing much with the status of Observable. 
- * But in some cases user might need to know the changed current status.
- * e.g. if user needs to know the change in price of the dress. 
- * In such a case the state of Observable is passed as parameter to the update method.
-
- * update(int price);
-
- * Once, user calls buyDress() he is not interested in any status change of RedDress. 
- * So, it calls unsubscribe() to get removed from the observer list of RedDress (Point 3 below). 
- * For this removeObserver of Observable need to be called. 
- * User keeps a reference of Observable so that it can call removeObserver when required.
+ * The guest class will collect guest information for the reservation to be made.
  */
 
 public class Guest implements Observer {
@@ -27,8 +13,9 @@ public class Guest implements Observer {
     private String email;
     private String address;
     private String creditCardInfo;
+    private ArrayList<String> guestDetails;
     
-    
+    /*
     private GregorianCalendar dateFrom;
     private String dateF;
     private String dateT;
@@ -43,51 +30,143 @@ public class Guest implements Observer {
     private MealPlan mealPlan;
     private Room roomType;
     private String upgrdesOrSpecInstruc;
-
-    private Reservation res = null;
+    */
     
+    
+    /**
+     * Default constructor
+     */
     public Guest()
     {
+        System.out.println("Default Constructor has been invoked.");
+        this.name = "Dimi";
+        this.phone = "1234567890";
+        this.email = "dimi2019@yahoo.com";
+        this.address = "1250 Long beach, CA ";
+        this.creditCardInfo = "4400456912347895";
+        this.guestDetails = new ArrayList<>();
+        guestDetails.add(name);
+        guestDetails.add(phone);
+        guestDetails.add(email);
+        guestDetails.add(address);
+        guestDetails.add(creditCardInfo);
         
     }
-    
-    public Guest(Reservation res, String name, String ph, String em, String addr, String ccInfo, 
-            String dateFrom, int nights)
+    /**
+     * Allows the Party World! employee to create a guest
+     * @param name
+     * @param ph
+     * @param em
+     * @param addr
+     * @param ccInfo 
+     */
+    public Guest(String nam, String ph, String em, String addr, String ccInfo)
     {
-        this.res = res;
-        //Guest info
-        this.name = name;
+        this.name = nam;
         this.phone = ph;
         this.email = em;
         this.address = addr;
         this.creditCardInfo = ccInfo;
-        
-        this.dateF = dateFrom;
-        String[] f = dateFrom.split("/");
-        int d = Integer.parseInt(f[0]);
-        int m = Integer.parseInt(f[1]) - 1;
-        int y = Integer.parseInt(f[2]);
-        int length = d + nights;
-        this.dateT = length + "/" + (m + 1) + "/" + y;
-        this.dateFrom = new GregorianCalendar(y, m, d);
-        this.dateTo = new GregorianCalendar(y, m, d + nights);
+        guestDetails.add(name);
+        guestDetails.add(phone);
+        guestDetails.add(email);
+        guestDetails.add(address);
+        guestDetails.add(creditCardInfo);
     }   
-    
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @return the creditCardInfo
+     */
+    public String getCreditCardInfo() {
+        return creditCardInfo;
+    }
+
+    /**
+     * @param creditCardInfo the creditCardInfo to set
+     */
+    public void setCreditCardInfo(String creditCardInfo) {
+        this.creditCardInfo = creditCardInfo;
+    }
+
+    /**
+     * 
+     */
     @Override
     public void update() {
-        getRoom();//when room becomes availanble the guest gets the room
-        unsubscribe(); // The guest is now no longer interested in the status so call this method
+        //after room becomes available and after cleaning is done.
+        //Needs some code here
+        System.out.println("The desired room is now available.");
     }
-    
+    /**
+     * 
+     */
     public void getRoom()
     {
         System.out.println("Got my room.");
     }
     
-    //to stop further notifications to the user
-    public void unsubscribe()
-    {
-        res.removerObserver(this);
+    @Override
+    public void update(String nam, String ph, String em, String addr, String ccInfo) {
+        System.out.println("Updating guest information now...");
+        
+        
+                
     }
     
 }
