@@ -4,8 +4,10 @@ public class MediumPartyRoom extends Room{
 
 	private int cost = 250;
 	private int addedCost = 0;
+	private int numPartyBags = 0;
 	private double hours = 0;
 	private int capacity = 45;
+	private String decorations = "";
 	private MealPlan meal = new BasicMealPlan();
 	
 	public MediumPartyRoom()
@@ -35,12 +37,35 @@ public class MediumPartyRoom extends Room{
 	
 	public void upgradeMeal(MealPlan tempMeal)
 	{
-		this.cost += (3 * (tempMeal.getCost() - this.meal.getCost()));
+		this.addedCost += (3 * (tempMeal.getCost() - this.meal.getCost()));
 		this.meal = tempMeal;
 	}
 	
 	public void upgradePartyBag()
 	{
 		this.addedCost += 5;
+		numPartyBags++;
+	}
+	
+	public void addProjector(int numHours)
+	{
+		this.addedCost += (10 * numHours);
+	}
+	
+	public void addDecorations(String newDecorations)
+	{
+		this.decorations = newDecorations;
+		this.addedCost += 100;
+	}
+	
+	public void resetRoom()
+	{
+		int cost = 250;
+		int addedCost = 0;
+		int numPartyBags = 0;
+		double hours = 0;
+		int capacity = 45;
+		String decorations = "";
+		MealPlan meal = new BasicMealPlan();
 	}
 }

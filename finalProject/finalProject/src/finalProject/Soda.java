@@ -1,4 +1,4 @@
-package finalExam;
+package finalProject;
 
 public class Soda {
 	private String flavor;

@@ -33,24 +33,17 @@ public class BilliardsRoom extends Room{
 		this.cost = cost;
 	}
 	
-	public void upgradeMeal(MealPlan tempMeal)
-	{
-		this.cost += (5 * (tempMeal.getCost() - this.meal.getCost()));
-		this.meal = tempMeal;
-	}
-	
 	public void addMeal(MealPlan newMeal)
 	{
 		meal = newMeal;
 	}
 	
-	public void upgradeTower()
+	public void resetRoom()
 	{
-		this.cost += 2;
-	}
-	
-	public void upgradePartyBag()
-	{
-		this.cost += 5;
+		int capacity = 10;
+		int addedCost = 0;
+		double hours = 0;
+		int cost = 25;
+		MealPlan meal;
 	}
 }

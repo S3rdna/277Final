@@ -1,4 +1,4 @@
-package finalExam;
+package finalProject;
 
 import java.util.ArrayList;
 

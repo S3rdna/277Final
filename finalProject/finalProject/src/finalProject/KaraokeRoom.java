@@ -3,6 +3,8 @@ package finalProject;
 public class KaraokeRoom extends Room{
 
 	private int capacity = 10;
+	private int addedCost = 0;
+	private int hours = 0;
 	private int cost = 30;
 	private MealPlan meal;
 	
@@ -33,22 +35,20 @@ public class KaraokeRoom extends Room{
 	
 	public void upgradeMeal(MealPlan tempMeal)
 	{
-		this.cost += (5 * (tempMeal.getCost() - this.meal.getCost()));
+		this.addedCost += (5 * (tempMeal.getCost() - this.meal.getCost()));
 		this.meal = tempMeal;
-	}
-	
-	public void upgradeTower()
-	{
-		this.cost += 2;
-	}
-	
-	public void upgradePartyBag()
-	{
-		this.cost += 5;
 	}
 	
 	public void replaceMealPlan(MealPlan newMeal)
 	{
 		meal = newMeal;
+	}
+	
+	public void resetRoom()
+	{
+		int capacity = 10;
+		int addedCost = 0;
+		int cost = 30;
+		MealPlan meal;
 	}
 }

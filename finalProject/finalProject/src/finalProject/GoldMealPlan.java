@@ -1,4 +1,4 @@
-package finalExam;
+package finalProject;
 
 public class GoldMealPlan implements MealPlan{
 	private	Pizza p1;

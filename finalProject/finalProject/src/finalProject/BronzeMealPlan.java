@@ -1,4 +1,4 @@
-package finalExam;
+package finalProject;
 
 public class BronzeMealPlan implements MealPlan{
 	 

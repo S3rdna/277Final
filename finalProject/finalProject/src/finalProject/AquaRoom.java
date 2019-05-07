@@ -4,8 +4,10 @@ public class AquaRoom extends Room{
 	
 	private int cost = 700;
 	private int capacity = 75;
+	private int numPartyBags = 0;
 	private int addedCost = 0;
 	private double hours = 0;
+	private String decorations = "";
 	private MealPlan meal = new BasicMealPlan();
 	
 	public AquaRoom()
@@ -35,17 +37,40 @@ public class AquaRoom extends Room{
 	
 	public void upgradeMeal(MealPlan tempMeal)
 	{
-		this.cost += (5 * (tempMeal.getCost() - this.meal.getCost()));
+		this.addedCost += (5 * (tempMeal.getCost() - this.meal.getCost()));
 		this.meal = tempMeal;
 	}
 	
 	public void upgradeTower()
 	{
-		this.cost += 2;
+		this.addedCost += 2;
 	}
 	
 	public void upgradePartyBag()
 	{
-		this.cost += 5;
+		this.addedCost += 5;
+		numPartyBags++;
+	}
+	
+	public void addProjector(int numHours)
+	{
+		this.addedCost += (10 * numHours);
+	}
+	
+	public void addDecorations(String newDecorations)
+	{
+		this.decorations = newDecorations;
+		this.addedCost += 100;
+	}
+	
+	public void resetRoom()
+	{
+		int cost = 700;
+		int capacity = 75;
+		int numPartyBags = 0;
+		int addedCost = 0;
+		double hours = 0;
+		String decorations = "";
+		MealPlan meal = new BasicMealPlan();
 	}
 }
