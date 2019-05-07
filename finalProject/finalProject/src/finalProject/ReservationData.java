@@ -1,17 +1,22 @@
 
+
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 /**
  *
  */
 public class ReservationData implements Reservation {
 
-    private ArrayList<Observer> reservationList;
-    private ArrayList<Observer> waitingList;
+    
+    private Room roomType;
+    
+    protected ArrayList<Observer> reservationList;
+    protected ArrayList<Observer> waitingList;
     //This reference is used to track those who made reservations have acutalliy checkedIn
-    private ArrayList<Observer> checkedIn;
-    private ArrayList<Observer> checkedOut;
+    protected ArrayList<Observer> checkedIn;
+    protected ArrayList<Observer> checkedOut;
+    
+
 
     private double totalCost;
     private double deposit;
@@ -23,6 +28,12 @@ public class ReservationData implements Reservation {
     public ReservationData() {
         this.reservationList = new ArrayList<>();
         this.waitingList = new ArrayList<>();
+    }
+    
+    public ReservationData(Room roomType) {
+        this.reservationList = new ArrayList<>();
+        this.waitingList = new ArrayList<>();
+        
     }
 
     /**
@@ -58,21 +69,32 @@ public class ReservationData implements Reservation {
     public void notifyObserver() {
         // Cycle through all waiting List observers and notifies them of if the desired room becomes available
         //if(RoomType isAvailable) then do below and informa the guest
+        
+        System.out.println("Notifying the Guests....and the Pary World Employee.");
+ 
         for(Observer observer : waitingList){
             observer.update();
         }
 
 
     }
-
     /**
      * Checks if a room is available and adds a reservation object to both the
      * list of reservations and to the rooms associated with the object.
      */
-    public boolean checkAvailability(GregorianCalendar dateFrom, GregorianCalendar dateTo, String roomType) {
-        GregorianCalendar from = null;
-        GregorianCalendar to = null;
-
+    public boolean checkAvailability(int dateFrom, int dateTo, Room roomType) {
+        
+        System.out.println("Checking Room availability now...");
+        if(dateFrom == 5 && dateTo == 7 && roomType.getNoOfRooms() > 0)
+        {
+            notifyObserver();
+            System.out.println(roomType + " Room is available from " + dateFrom + " to "+dateTo);
+            setRoomType(roomType);
+            return true;
+        }
+        
+        System.out.println(roomType + " Room is not available from " + dateFrom + " to " + dateTo);
+        
         return false;
     }
 
@@ -170,10 +192,18 @@ public class ReservationData implements Reservation {
                 + "\nNumber of waitingInLine: " + this.getWaitingList().size();
     }
 
-    public static void main(String[] args) {
-        ReservationData newRes = new ReservationData();
-        System.out.println(newRes);
-        newRes.notifyObserver();
+    /**
+     * @return the roomType
+     */
+    public Room getRoomType() {
+        return roomType;
+    }
+
+    /**
+     * @param roomType the roomType to set
+     */
+    public void setRoomType(Room roomType) {
+        this.roomType = roomType;
     }
 
 }

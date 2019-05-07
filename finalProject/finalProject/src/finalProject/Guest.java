@@ -15,23 +15,6 @@ public class Guest implements Observer {
     private String creditCardInfo;
     private ArrayList<String> guestDetails;
     
-    /*
-    private GregorianCalendar dateFrom;
-    private String dateF;
-    private String dateT;
-    private GregorianCalendar dateTo;
-    private Date time;
-    
-    private int numberNights;
-    private int roomsNum;
-    private double totalCost;
-    private double deposit;
-    
-    private MealPlan mealPlan;
-    private Room roomType;
-    private String upgrdesOrSpecInstruc;
-    */
-    
     
     /**
      * Default constructor
@@ -163,9 +146,16 @@ public class Guest implements Observer {
     
     @Override
     public void update(String nam, String ph, String em, String addr, String ccInfo) {
-        System.out.println("Updating guest information now...");
-        
-        
+        System.out.println("Updating guest information now...");        
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "Guest Details:\n\t Name: " + 
+                this.name +"\nAddress: "+
+                this.address + "\nPhone number: " + this.phone
+                +"\nEmail: "+ this.email;
                 
     }
     
