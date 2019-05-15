@@ -1,19 +1,18 @@
 
-import java.util.ArrayList;
-
-
 /*
  * The guest class will collect guest information for the reservation to be made.
  */
 
 public class Guest implements Observer {
     
-    private String name;
+    private String fName; 
+    private String lName;
     private String phone;
     private String email;
     private String address;
-    private String creditCardInfo;
-    private ArrayList<String> guestDetails;
+    private String DOB;
+    
+    private String[] creditCardInfo = new String[3];
     
     
     /**
@@ -21,18 +20,14 @@ public class Guest implements Observer {
      */
     public Guest()
     {
-        System.out.println("Default Constructor has been invoked.");
-        this.name = "Dimi";
+        this.fName = "Dimi";
+        this.lName = "Perer";
         this.phone = "1234567890";
         this.email = "dimi2019@yahoo.com";
         this.address = "1250 Long beach, CA ";
-        this.creditCardInfo = "4400456912347895";
-        this.guestDetails = new ArrayList<>();
-        guestDetails.add(name);
-        guestDetails.add(phone);
-        guestDetails.add(email);
-        guestDetails.add(address);
-        guestDetails.add(creditCardInfo);
+        this.creditCardInfo[0] = "name";
+        this.creditCardInfo[1] = "4815232615694878";
+        this.creditCardInfo[2] = "482";
         
     }
     /**
@@ -41,35 +36,61 @@ public class Guest implements Observer {
      * @param ph
      * @param em
      * @param addr
-     * @param ccInfo 
      */
-    public Guest(String nam, String ph, String em, String addr, String ccInfo)
+    public Guest(String fNam, String lNam, String ph, String em, String addr, String nameOnCard, String ccNumber, String secCode)
     {
-        this.name = nam;
+        this.fName = fNam;
+        this.lName = lNam;
         this.phone = ph;
         this.email = em;
         this.address = addr;
-        this.creditCardInfo = ccInfo;
-        guestDetails.add(name);
-        guestDetails.add(phone);
-        guestDetails.add(email);
-        guestDetails.add(address);
-        guestDetails.add(creditCardInfo);
+        this.creditCardInfo[0] = nameOnCard;
+        this.creditCardInfo[1] = ccNumber;
+        this.creditCardInfo[2] = secCode;
     }   
 
     /**
-     * @return the name
+     * @return the DOB
      */
-    public String getName() {
-        return name;
+    public String getDOB() {
+        return DOB;
     }
 
     /**
-     * @param name the name to set
+     * @param DOB the DOB to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
     }
+
+    /**
+     * @return the fName
+     */
+    public String getfName() {
+        return fName;
+    }
+
+    /**
+     * @param fName the fName to set
+     */
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+
+    /**
+     * @return the lName
+     */
+    public String getlName() {
+        return lName;
+    }
+
+    /**
+     * @param lName the lName to set
+     */
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
+
 
     /**
      * @return the phone
@@ -113,19 +134,6 @@ public class Guest implements Observer {
         this.address = address;
     }
 
-    /**
-     * @return the creditCardInfo
-     */
-    public String getCreditCardInfo() {
-        return creditCardInfo;
-    }
-
-    /**
-     * @param creditCardInfo the creditCardInfo to set
-     */
-    public void setCreditCardInfo(String creditCardInfo) {
-        this.creditCardInfo = creditCardInfo;
-    }
 
     /**
      * 
@@ -145,18 +153,33 @@ public class Guest implements Observer {
     }
     
     @Override
-    public void update(String nam, String ph, String em, String addr, String ccInfo) {
-        System.out.println("Updating guest information now...");        
+    public void update(String fnam, String lnam, String ph, String em, String addr, String ccInfo) {
+        System.out.println("Updating guest information now..."); 
+        
     }
     
     @Override
     public String toString()
     {
         return "Guest Details:\n\t Name: " + 
-                this.name +"\nAddress: "+
+                this.getfName() + " " +this.getlName()+"\nAddress: "+
                 this.address + "\nPhone number: " + this.phone
                 +"\nEmail: "+ this.email;
                 
+    }
+
+    /**
+     * @return the creditCardInfo
+     */
+    public String[] getCreditCardInfo() {
+        return creditCardInfo;
+    }
+
+    /**
+     * @param creditCardInfo the creditCardInfo to set
+     */
+    public void setCreditCardInfo(String[] creditCardInfo) {
+        this.creditCardInfo = creditCardInfo;
     }
     
 }
