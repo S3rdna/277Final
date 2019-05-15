@@ -2,6 +2,7 @@ package finalProject;
 
 public class AquaRoom extends Room{
 	
+	public static String DESCRIPTION = "Olympic-sized pool with water slide, kiddie pool, and large jacuzzi";
 	private int cost = 700;
 	private int capacity = 75;
 	private int numPartyBags = 0;

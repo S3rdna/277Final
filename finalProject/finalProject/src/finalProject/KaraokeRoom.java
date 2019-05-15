@@ -2,6 +2,7 @@ package finalProject;
 
 public class KaraokeRoom extends Room{
 
+	public static String DESCRIPTION = "Enclosed lounge with karaoke machine";
 	private int capacity = 10;
 	private int addedCost = 0;
 	private int hours = 0;

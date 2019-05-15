@@ -2,6 +2,7 @@ package finalProject;
 
 public class BilliardsRoom extends Room{
 	
+	public static String DESCRIPTION = "Enclosed lounge with pool table";
 	private int capacity = 10;
 	private int addedCost = 0;
 	private double hours = 0;

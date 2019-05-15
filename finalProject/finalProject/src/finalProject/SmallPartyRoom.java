@@ -2,6 +2,7 @@ package finalProject;
 
 public class SmallPartyRoom extends Room{
 	
+	public static String DESCRIPTION = "Room with party tables and chairs, adjacent to arcade";
 	private int cost = 150;
 	private int addedCost;
 	private int numPartyBags = 0;
