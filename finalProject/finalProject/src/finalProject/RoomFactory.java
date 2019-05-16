@@ -68,10 +68,12 @@ public class RoomFactory {
 				{
 					Date tempKey = entry.getKey();
 					Date tempValue = entry.getValue();
+					tempKey.setHours(tempKey.getHours() - 1);
+					tempValue.setHours(tempValue.getHours() + 1);
 					System.out.println(tempKey.toString());
 					System.out.println(tempValue.toString());
 					//need to account for time to clean
-					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)))
+					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)) || (begin.equals(tempKey) || begin.equals(tempValue)) || (end.equals(tempKey) || end.equals(tempValue)))
 					{
 						available = false;
 					}
@@ -96,7 +98,9 @@ public class RoomFactory {
 				{
 					Date tempKey = entry.getKey();
 					Date tempValue = entry.getValue();
-					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)))
+					tempKey.setMinutes(tempKey.getMinutes() - 30);
+					tempValue.setMinutes(tempValue.getMinutes() - 30);
+					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)) || (begin.equals(tempKey) || begin.equals(tempValue)) || (end.equals(tempKey) || end.equals(tempValue)))
 					{
 						available = false;
 					}
@@ -121,7 +125,9 @@ public class RoomFactory {
 				{
 					Date tempKey = entry.getKey();
 					Date tempValue = entry.getValue();
-					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)))
+					tempKey.setHours(tempKey.getHours() - 1);
+					tempValue.setHours(tempValue.getHours() + 1);
+					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)) || (begin.equals(tempKey) || begin.equals(tempValue)) || (end.equals(tempKey) || end.equals(tempValue)))
 					{
 						available = false;
 					}
@@ -146,7 +152,9 @@ public class RoomFactory {
 				{
 					Date tempKey = entry.getKey();
 					Date tempValue = entry.getValue();
-					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)))
+					tempKey.setMinutes(tempKey.getMinutes() - 15);
+					tempValue.setMinutes(tempValue.getMinutes() - 15);
+					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)) || (begin.equals(tempKey) || begin.equals(tempValue)) || (end.equals(tempKey) || end.equals(tempValue)))
 					{
 						available = false;
 					}
@@ -171,7 +179,9 @@ public class RoomFactory {
 				{
 					Date tempKey = entry.getKey();
 					Date tempValue = entry.getValue();
-					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)))
+					tempKey.setMinutes(tempKey.getMinutes() - 15);
+					tempValue.setMinutes(tempValue.getMinutes() - 15);
+					if ((begin.after(tempKey) && begin.before(tempValue)) || (end.after(tempKey) && end.before(tempValue)) || (begin.equals(tempKey) || begin.equals(tempValue)) || (end.equals(tempKey) || end.equals(tempValue)))
 					{
 						available = false;
 					}
